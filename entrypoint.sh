@@ -20,11 +20,13 @@ if command -v claude &> /dev/null; then
     claude update || echo "Claude Code 更新检查完成"
 else
     echo "未检测到 Claude Code，正在安装..."
+    echo "CLAUDE_PACKAGE 环境变量: ${CLAUDE_PACKAGE:-未设置}"
     if [ -n "$CLAUDE_PACKAGE" ]; then
-        npm install -g "$CLAUDE_PACKAGE" || echo "Claude Code 安装失败，请检查包名"
+        echo "开始安装: npm install -g $CLAUDE_PACKAGE"
+        npm install -g "$CLAUDE_PACKAGE" && echo "Claude Code 安装成功" || echo "Claude Code 安装失败，请检查包名和网络"
     else
         echo "警告: 未设置 CLAUDE_PACKAGE 环境变量，跳过 Claude Code 安装"
-        echo "请设置 CLAUDE_PACKAGE 环境变量为正确的 npm 包名"
+        echo "请在 .env 文件中设置 CLAUDE_PACKAGE 环境变量为正确的 npm 包名"
     fi
 fi
 

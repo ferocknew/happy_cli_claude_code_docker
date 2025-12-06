@@ -6,6 +6,7 @@ home/
 data/*
 !data/.claude/
 !data/.happy/
+!data/.claude.json
 data/.claude/*
 data/.happy/*
 !data/.claude/.gitkeep

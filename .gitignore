@@ -1,7 +1,15 @@
 # 工作目录和数据目录
 workspace/
-data/
 home/
+
+# data 目录内容（但保留目录结构）
+data/*
+!data/.claude/
+!data/.happy/
+data/.claude/*
+data/.happy/*
+!data/.claude/.gitkeep
+!data/.happy/.gitkeep
 
 # 环境变量配置（包含私密信息）
 .env

@@ -2,7 +2,7 @@ services:
   claude-happy-env:
     # 使用已构建的镜像（如果存在）
     # 支持从环境变量读取 Docker 私服地址
-    image: ${DOCKER_REGISTRY:-}happy/happy_cli_claude_code_docker:251206.3
+    image: ${DOCKER_REGISTRY:-}happy/happy_cli_claude_code_docker:251206.4
     # 如果需要重新构建，取消注释下面的 build 配置
     # build:
     #   context: .

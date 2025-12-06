@@ -8,19 +8,29 @@ echo "==================================="
 echo "Claude Code & Happy CLI 环境启动"
 echo "==================================="
 
-# 检查并自动更新 Claude Code
+# 配置 npm 源（如果设置了环境变量）
+if [ -n "$NPM_REGISTRY" ]; then
+    echo "配置 npm 源: $NPM_REGISTRY"
+    npm config set registry "$NPM_REGISTRY"
+fi
+
+# 检查并安装/更新 Claude Code
 if command -v claude &> /dev/null; then
     echo "检测到 Claude Code，正在检查更新..."
     claude update || echo "Claude Code 更新检查完成"
 else
-    echo "未检测到 Claude Code"
+    echo "未检测到 Claude Code，正在安装..."
+    if [ -n "$CLAUDE_PACKAGE" ]; then
+        npm install -g "$CLAUDE_PACKAGE" || echo "Claude Code 安装失败，请检查包名"
+    else
+        echo "警告: 未设置 CLAUDE_PACKAGE 环境变量，跳过 Claude Code 安装"
+        echo "请设置 CLAUDE_PACKAGE 环境变量为正确的 npm 包名"
+    fi
 fi
 
-# 检查并自动更新 Happy CLI
+# 检查 Happy CLI
 if command -v happy &> /dev/null; then
     echo "检测到 Happy CLI"
-    # 如果有更新命令，可以在这里添加
-    # npm update -g happy-coder
 else
     echo "未检测到 Happy CLI"
 fi

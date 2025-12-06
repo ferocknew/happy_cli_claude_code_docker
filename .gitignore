@@ -3,6 +3,9 @@ workspace/
 data/
 home/
 
+# 环境变量配置（包含私密信息）
+.env
+
 # Docker 相关
 *.log
 

@@ -75,9 +75,6 @@ RUN chmod -R 755 /workspace /data
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# 暴露可能需要的端口
-EXPOSE 8080 3000
-
 # 设置启动脚本
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 

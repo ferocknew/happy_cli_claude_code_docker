@@ -35,11 +35,6 @@ services:
       # Happy CLI 配置和数据目录映射到 data
       - ./data/.happy:/root/.happy
     
-    # 端口映射
-    ports:
-      - "8080:8080"
-      - "3000:3000"
-    
     # 网络模式
     network_mode: bridge
     

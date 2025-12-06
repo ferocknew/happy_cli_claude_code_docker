@@ -4,6 +4,10 @@
 
 set -e
 
+# 加载 nvm 环境
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 echo "==================================="
 echo "Claude Code & Happy CLI 环境启动"
 echo "==================================="

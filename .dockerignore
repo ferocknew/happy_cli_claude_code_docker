@@ -1,0 +1,36 @@
+# Git 相关
+.git
+.gitignore
+.gitattributes
+
+# IDE 相关
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# 文档
+README.md
+*.md
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+
+# 本地数据目录
+workspace/
+data/
+config/
+home/
+
+# Docker 相关
+compose.yaml
+.dockerignore
+
+# 系统文件
+.DS_Store
+Thumbs.db

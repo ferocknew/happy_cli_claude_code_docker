@@ -1,0 +1,59 @@
+services:
+  claude-happy-env:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: claude_happy_workspace
+    
+    # 环境变量配置
+    environment:
+      - TZ=Asia/Shanghai
+      - WORKSPACE=/workspace
+    
+    # 卷映射 - 将本地目录映射到容器内
+    volumes:
+      # 工作目录映射
+      - ./workspace:/workspace
+      # 数据目录映射
+      - ./data:/data
+      # 配置文件映射（如果需要）
+      - ./config:/config
+      # 持久化 home 目录（保存工具配置）
+      - ./home:/root
+    
+    # 端口映射
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    
+    # 网络模式
+    network_mode: bridge
+    
+    # 保持容器运行
+    stdin_open: true
+    tty: true
+    
+    # 重启策略
+    restart: unless-stopped
+    
+    # 资源限制（可选）
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    
+    # 安全选项
+    security_opt:
+      - no-new-privileges:true
+    
+    # 只读根文件系统（可选，更安全但可能需要调整）
+    # read_only: true
+    
+    # 临时文件系统挂载（如果启用只读根文件系统）
+    # tmpfs:
+    #   - /tmp
+    #   - /var/tmp

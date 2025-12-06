@@ -1,1 +1,11 @@
-{}
+{
+  "numStartups": 0,
+  "installMethod": "global",
+  "autoUpdates": true,
+  "theme": "dark-ansi",
+  "tipsHistory": {},
+  "opus45MigrationComplete": true,
+  "bypassPermissionsModeAccepted": true,
+  "isQualifiedForDataSharing": false,
+  "githubRepoPaths": {}
+}

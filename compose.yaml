@@ -2,17 +2,17 @@ services:
   claude-happy-env:
     # 使用已构建的镜像（如果存在）
     # 支持从环境变量读取 Docker 私服地址
-    image: ${DOCKER_REGISTRY:-}happy/happy_cli_claude_code_docker:251206.5
+    image: ${DOCKER_REGISTRY:-}happy/happy_cli_claude_code_docker:251206.6
     # 如果需要重新构建，取消注释下面的 build 配置
     # build:
     #   context: .
     #   dockerfile: dockerfile
     container_name: claude_happy_workspace
-    
+
     # 从 .env 文件加载环境变量
     env_file:
       - .env
-    
+
     # 环境变量配置
     environment:
       - TZ=Asia/Shanghai
@@ -22,7 +22,7 @@ services:
       - NPM_REGISTRY=${NPM_REGISTRY:-https://registry.npmjs.org}
       # Claude Code 包名（根据实际情况修改）
       - CLAUDE_PACKAGE=${CLAUDE_PACKAGE:-@anthropic-ai/claude-code}
-    
+
     # 卷映射 - 将本地目录映射到容器内
     volumes:
       # 工作目录映射
@@ -34,17 +34,17 @@ services:
       - ./data/.claude.json:/root/.claude.json
       # Happy CLI 配置和数据目录映射到 data
       - ./data/.happy:/root/.happy
-    
+
     # 网络模式
     network_mode: bridge
-    
+
     # 保持容器运行
     stdin_open: true
     tty: true
-    
+
     # 重启策略
     restart: unless-stopped
-    
+
     # 资源限制（可选）
     deploy:
       resources:
@@ -54,14 +54,14 @@ services:
         reservations:
           cpus: '1.0'
           memory: 2G
-    
+
     # 安全选项
     security_opt:
       - no-new-privileges:true
-    
+
     # 只读根文件系统（可选，更安全但可能需要调整）
     # read_only: true
-    
+
     # 临时文件系统挂载（如果启用只读根文件系统）
     # tmpfs:
     #   - /tmp

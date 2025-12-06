@@ -16,7 +16,7 @@ services:
     # 环境变量配置
     environment:
       - TZ=Asia/Shanghai
-      - WORKSPACE=/workspace
+      - WORKSPACE=/data
       # npm 源配置（中国大陆用户可以使用淘宝源）
       # - NPM_REGISTRY=https://registry.npmmirror.com
       - NPM_REGISTRY=${NPM_REGISTRY:-https://registry.npmjs.org}
@@ -25,14 +25,12 @@ services:
 
     # 卷映射 - 将本地目录映射到容器内
     volumes:
-      # 工作目录映射
-      - ./workspace:/workspace
-      # 持久化 home 目录（保存工具配置）
-      - ./home:/root
-      # Claude Code 配置和数据目录映射到 data
+      # 工作目录和数据目录（合并为 data）
+      - ./data:/data
+      # Claude Code 配置映射到 data 子目录
       - ./data/.claude:/root/.claude
       - ./data/.claude.json:/root/.claude.json
-      # Happy CLI 配置和数据目录映射到 data
+      # Happy CLI 配置映射到 data 子目录
       - ./data/.happy:/root/.happy
 
     # 网络模式

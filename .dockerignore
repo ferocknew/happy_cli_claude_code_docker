@@ -22,9 +22,7 @@ README.md
 *.temp
 
 # 本地数据目录
-workspace/
 data/
-home/
 
 # Docker 相关
 compose.yaml

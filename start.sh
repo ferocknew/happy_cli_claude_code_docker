@@ -11,7 +11,7 @@ echo ""
 
 # 创建必要的目录
 echo "创建必要的目录..."
-mkdir -p workspace data home data/.claude data/.happy
+mkdir -p data data/.claude data/.happy
 
 # 创建 .claude.json 文件（如果不存在）
 if [ ! -f data/.claude.json ]; then

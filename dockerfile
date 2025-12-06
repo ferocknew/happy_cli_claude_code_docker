@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1
 
 # 设置工作目录
-WORKDIR /workspace
+WORKDIR /data
 
 # 安装基础依赖和工具
 RUN apt-get update && apt-get install -y \
@@ -65,10 +65,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
 RUN npm install -g happy-coder
 
 # 创建工作目录和 Claude Code 目录
-RUN mkdir -p /workspace /data /root/.claude
+RUN mkdir -p /data /root/.claude
 
 # 设置权限
-RUN chmod -R 755 /workspace /data
+RUN chmod -R 755 /data
 
 # 复制启动脚本
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

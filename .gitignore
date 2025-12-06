@@ -1,6 +1,8 @@
-# 工作目录和数据目录
-workspace/
-home/
+# 工作目录和数据目录（保留目录结构，忽略内容）
+workspace/*
+!workspace/.gitkeep
+home/*
+!home/.gitkeep
 
 # data 目录内容（但保留目录结构）
 data/*

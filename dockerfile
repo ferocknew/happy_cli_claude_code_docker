@@ -60,22 +60,25 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装 Claude Code (假设通过 npm 安装)
-# 注意：这里需要根据实际的 Claude Code 安装方式调整
-RUN npm install -g @anthropic-ai/claude-code || echo "Claude Code installation placeholder"
-
 # 安装 Happy CLI
 # 从 GitHub 安装 happy-coder
 RUN npm install -g happy-coder
 
-# 创建工作目录
-RUN mkdir -p /workspace /data
+# 创建工作目录和 Claude Code 目录
+RUN mkdir -p /workspace /data /root/.claude
 
 # 设置权限
 RUN chmod -R 755 /workspace /data
 
+# 复制启动脚本
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # 暴露可能需要的端口
 EXPOSE 8080 3000
+
+# 设置启动脚本
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # 默认命令
 CMD ["/bin/bash"]

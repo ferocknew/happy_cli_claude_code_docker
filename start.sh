@@ -11,7 +11,13 @@ echo ""
 
 # 创建必要的目录
 echo "创建必要的目录..."
-mkdir -p workspace data config home
+mkdir -p workspace data home data/.claude data/.happy
+
+# 创建 .claude.json 文件（如果不存在）
+if [ ! -f data/.claude.json ]; then
+    echo "{}" > data/.claude.json
+    echo "已创建 data/.claude.json 配置文件"
+fi
 
 # 检查 Docker 是否运行
 if ! docker info > /dev/null 2>&1; then

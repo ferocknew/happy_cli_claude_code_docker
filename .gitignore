@@ -1,5 +1,6 @@
 # 工作目录和数据目录
 workspace/
+data/
 home/
 
 # Docker 相关

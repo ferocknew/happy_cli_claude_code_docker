@@ -24,7 +24,6 @@ README.md
 # 本地数据目录
 workspace/
 data/
-config/
 home/
 
 # Docker 相关

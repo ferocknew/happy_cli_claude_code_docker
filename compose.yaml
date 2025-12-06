@@ -14,12 +14,13 @@ services:
     volumes:
       # 工作目录映射
       - ./workspace:/workspace
-      # 数据目录映射
-      - ./data:/data
-      # 配置文件映射（如果需要）
-      - ./config:/config
       # 持久化 home 目录（保存工具配置）
       - ./home:/root
+      # Claude Code 配置和数据目录映射到 data
+      - ./data/.claude:/root/.claude
+      - ./data/.claude.json:/root/.claude.json
+      # Happy CLI 配置和数据目录映射到 data
+      - ./data/.happy:/root/.happy
     
     # 端口映射
     ports:

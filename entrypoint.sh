@@ -42,5 +42,17 @@ echo "环境准备完成"
 echo "==================================="
 echo ""
 
-# 执行传入的命令，如果没有命令则启动 bash
-exec "$@"
+# 如果没有传入命令，且 Claude Code 存在，则在 workspace 目录启动 Claude
+if [ $# -eq 0 ] || [ "$1" = "/bin/bash" ]; then
+    if command -v claude &> /dev/null; then
+        echo "启动 Claude Code 在 /workspace 目录..."
+        cd /workspace
+        exec claude
+    else
+        echo "Claude Code 未安装，启动 bash..."
+        exec /bin/bash
+    fi
+else
+    # 执行传入的命令
+    exec "$@"
+fi

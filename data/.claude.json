@@ -1,11 +1,12 @@
 {
-  "numStartups": 1,
+  "numStartups": 2,
   "installMethod": "global",
   "autoUpdates": true,
   "cachedStatsigGates": {
     "tengu_disable_bypass_permissions_mode": false,
     "tengu_enable_versioned_plugins": false,
-    "tengu_tool_pear": false
+    "tengu_tool_pear": false,
+    "tengu_web_tasks": false
   },
   "cachedDynamicConfigs": {
     "tengu-top-of-feed-tip": {
@@ -20,7 +21,7 @@
   "sonnet45MigrationComplete": true,
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.0.60",
-  "lastReleaseNotesSeen": "2.0.60",
+  "lastReleaseNotesSeen": "2.0.14",
   "projects": {
     "/data": {
       "allowedTools": [],
@@ -28,11 +29,13 @@
       "mcpServers": {},
       "enabledMcpjsonServers": [],
       "disabledMcpjsonServers": [],
-      "hasTrustDialogAccepted": false,
-      "projectOnboardingSeenCount": 1,
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 2,
       "hasClaudeMdExternalIncludesApproved": false,
       "hasClaudeMdExternalIncludesWarningShown": false,
       "exampleFiles": []
     }
-  }
+  },
+  "changelogLastFetched": 1765039214307,
+  "hasOpusPlanDefault": false
 }

@@ -12,6 +12,7 @@ data/*
 data/.claude/*
 data/.happy/*
 !data/.claude/.gitkeep
+!data/.claude/settings.json
 !data/.happy/.gitkeep
 
 # 环境变量配置（包含私密信息）

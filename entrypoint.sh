@@ -42,6 +42,25 @@ echo "环境准备完成"
 echo "==================================="
 echo ""
 
+# 替换 settings.json 中的环境变量占位符
+if [ -f /root/.claude/settings.json ]; then
+    echo "配置 Claude Code settings.json..."
+    # 使用 envsubst 替换环境变量（如果可用）
+    if command -v envsubst &> /dev/null; then
+        envsubst < /root/.claude/settings.json > /root/.claude/settings.json.tmp
+        mv /root/.claude/settings.json.tmp /root/.claude/settings.json
+    else
+        # 手动替换环境变量
+        if [ -n "$ANTHROPIC_AUTH_TOKEN" ]; then
+            sed -i "s|\${ANTHROPIC_AUTH_TOKEN}|$ANTHROPIC_AUTH_TOKEN|g" /root/.claude/settings.json
+        fi
+        if [ -n "$ANTHROPIC_BASE_URL" ]; then
+            sed -i "s|\${ANTHROPIC_BASE_URL}|$ANTHROPIC_BASE_URL|g" /root/.claude/settings.json
+        fi
+    fi
+    echo "Claude Code 配置完成"
+fi
+
 # 如果没有传入命令，且 Claude Code 存在，则在 workspace 目录启动 Claude
 if [ $# -eq 0 ] || [ "$1" = "/bin/bash" ]; then
     if command -v claude &> /dev/null; then

@@ -17,15 +17,47 @@ RUN apt-get update && apt-get install -y \
     git \
     vim \
     nano \
-    python3 \
-    python3-pip \
-    python3-venv \
-    nodejs \
-    npm \
     ca-certificates \
     gnupg \
     lsb-release \
     build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libffi-dev \
+    liblzma-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 pyenv
+ENV PYENV_ROOT="/root/.pyenv"
+ENV PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+
+RUN curl https://pyenv.run | bash && \
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
+    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+# 安装 Python 3.12 并设置为全局默认版本
+RUN pyenv install 3.12 && \
+    pyenv global 3.12 && \
+    pyenv rehash
+
+# 安装 uv (快速 Python 包管理器)
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    mv /root/.cargo/bin/uv /usr/local/bin/ && \
+    mv /root/.cargo/bin/uvx /usr/local/bin/
+
+# 安装 Node.js 和 npm
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装 Claude Code (假设通过 npm 安装)
@@ -33,8 +65,8 @@ RUN apt-get update && apt-get install -y \
 RUN npm install -g @anthropic-ai/claude-code || echo "Claude Code installation placeholder"
 
 # 安装 Happy CLI
-# 注意：这里需要根据实际的 Happy CLI 安装方式调整
-RUN pip3 install --no-cache-dir happy-cli || echo "Happy CLI installation placeholder"
+# 从 GitHub 安装 happy-coder
+RUN npm install -g happy-coder
 
 # 创建工作目录
 RUN mkdir -p /workspace /data

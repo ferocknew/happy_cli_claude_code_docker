@@ -55,11 +55,10 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # 将 uv 添加到 PATH
 ENV PATH="/root/.local/bin:$PATH"
 
-# 安装 Node.js 和 npm
-RUN apt-get update && apt-get install -y \
-    nodejs \
-    npm \
-    && rm -rf /var/lib/apt/lists/*
+# 安装 Node.js 22.x 和 npm
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # 安装 Happy CLI
 # 从 GitHub 安装 happy-coder

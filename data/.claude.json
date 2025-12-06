@@ -22,7 +22,7 @@
   "lastOnboardingVersion": "2.0.60",
   "lastReleaseNotesSeen": "2.0.60",
   "projects": {
-    "/workspace": {
+    "/data": {
       "allowedTools": [],
       "mcpContextUris": [],
       "mcpServers": {},

@@ -61,14 +61,21 @@ if [ -f /root/.claude/settings.json ]; then
     echo "Claude Code 配置完成"
 fi
 
-# 如果没有传入命令，且 Claude Code 存在，则在 workspace 目录启动 Claude
+# 如果没有传入命令，则在 workspace 目录启动 Happy CLI
 if [ $# -eq 0 ] || [ "$1" = "/bin/bash" ]; then
-    if command -v claude &> /dev/null; then
-        echo "启动 Claude Code 在 /workspace 目录..."
-        cd /workspace
-        exec claude
+    cd /workspace
+    
+    # 检查 Happy CLI 是否存在
+    if command -v happy &> /dev/null; then
+        echo "启动 Happy CLI 在 /workspace 目录..."
+        # 设置 HAPPY_SERVER_URL 环境变量
+        if [ -n "$HAPPY_SERVER_URL" ]; then
+            echo "HAPPY_SERVER_URL: $HAPPY_SERVER_URL"
+            export HAPPY_SERVER_URL
+        fi
+        exec happy
     else
-        echo "Claude Code 未安装，启动 bash..."
+        echo "Happy CLI 未安装，启动 bash..."
         exec /bin/bash
     fi
 else

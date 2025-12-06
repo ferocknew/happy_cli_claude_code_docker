@@ -1,11 +1,38 @@
 {
-  "numStartups": 0,
+  "numStartups": 1,
   "installMethod": "global",
   "autoUpdates": true,
-  "theme": "dark-ansi",
-  "tipsHistory": {},
+  "cachedStatsigGates": {
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_enable_versioned_plugins": false,
+    "tengu_tool_pear": false
+  },
+  "cachedDynamicConfigs": {
+    "tengu-top-of-feed-tip": {
+      "tip": "",
+      "color": "dim"
+    }
+  },
   "opus45MigrationComplete": true,
   "bypassPermissionsModeAccepted": true,
   "isQualifiedForDataSharing": false,
-  "githubRepoPaths": {}
+  "githubRepoPaths": {},
+  "sonnet45MigrationComplete": true,
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "2.0.60",
+  "lastReleaseNotesSeen": "2.0.60",
+  "projects": {
+    "/workspace": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": []
+    }
+  }
 }

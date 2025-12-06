@@ -50,9 +50,10 @@ RUN pyenv install 3.12 && \
     pyenv rehash
 
 # 安装 uv (快速 Python 包管理器)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    mv /root/.cargo/bin/uv /usr/local/bin/ && \
-    mv /root/.cargo/bin/uvx /usr/local/bin/
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 将 uv 添加到 PATH
+ENV PATH="/root/.local/bin:$PATH"
 
 # 安装 Node.js 和 npm
 RUN apt-get update && apt-get install -y \

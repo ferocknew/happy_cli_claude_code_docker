@@ -31,7 +31,7 @@
       "disabledMcpjsonServers": [],
       "hasTrustDialogAccepted": true,
       "projectOnboardingSeenCount": 2,
-      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesApproved": true,
       "hasClaudeMdExternalIncludesWarningShown": false,
       "exampleFiles": []
     }

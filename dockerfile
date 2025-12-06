@@ -55,17 +55,19 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # 将 uv 添加到 PATH
 ENV PATH="/root/.local/bin:$PATH"
 
-# 安装 Node.js 22.x 和 npm
-RUN rm -rf /var/lib/apt/lists/* && \
-    apt-get clean && \
-    apt-get update && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
+# 安装 nvm 和 Node.js 22.x
+ENV NVM_DIR="/root/.nvm"
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
+    . "$NVM_DIR/nvm.sh" && \
+    nvm install 22 && \
+    nvm use 22 && \
+    nvm alias default 22 && \
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc && \
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc && \
+    npm install -g happy-coder
 
-# 安装 Happy CLI
-# 从 GitHub 安装 happy-coder
-RUN npm install -g happy-coder
+# 将 Node.js 添加到 PATH（使用 nvm 安装的 Node.js 路径）
+ENV PATH="$NVM_DIR/versions/node/v22.12.0/bin:$PATH"
 
 # 创建工作目录和 Claude Code 目录
 RUN mkdir -p /data /root/.claude

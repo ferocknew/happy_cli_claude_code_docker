@@ -64,6 +64,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | b
     nvm alias default 22 && \
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc && \
     echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc && \
+    npm install -g npm && \
     npm install -g happy-coder@0.14.0-0
 
 # 将 Node.js 添加到 PATH（使用 nvm 安装的 Node.js 路径）

@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 env:
-  DOCKER_IMAGE: happy/happy_cli_claude_code_docker
+  DOCKER_IMAGE: jonahfu/happy_cli_claude_code_docker
 
 jobs:
   build-and-push:

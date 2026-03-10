@@ -1,5 +1,8 @@
 # Claude Code & Happy CLI Docker 环境
 
+- [Docker Hub](https://hub.docker.com/r/jonahfu/happy_cli_claude_code_docker)
+- [GitHub](https://github.com/ferocknew/happy_cli_claude_code_docker)
+
 这是一个基于 Debian 12 slim 的 Docker 项目，用于安全地运行 Claude Code 和 Happy CLI 工具。通过 Docker 容器隔离，确保主机系统的安全性，同时通过目录映射实现便捷的文件访问。
 
 ## 项目特点

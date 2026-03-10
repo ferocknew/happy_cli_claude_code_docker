@@ -41,6 +41,13 @@ else
     echo "未检测到 Happy CLI"
 fi
 
+# 检查 Happy Agent
+if command -v happy-agent &> /dev/null; then
+    echo "检测到 Happy Agent"
+else
+    echo "未检测到 Happy Agent"
+fi
+
 echo "==================================="
 echo "环境准备完成"
 echo "==================================="
